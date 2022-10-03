@@ -43,6 +43,9 @@ def lambda_handler(event, context):
     # Decode the image data
     image = base64.b64decode(event["body"]["image_data"])
 
+    ###
+    ## REFERENCE: https://knowledge.udacity.com/questions/760135
+    ## I borrowed from the comment within this question thread from Peter, in below use of invoke_endpoint and boto3 
     runtime = boto3.client('runtime.sagemaker')
     response = runtime.invoke_endpoint(
         EndpointName=ENDPOINT,
